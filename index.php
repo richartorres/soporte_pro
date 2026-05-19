@@ -52,6 +52,7 @@
                         <th>Descripción</th>
                         <th>Prioridad</th>
                         <th>Fecha</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,6 +71,9 @@
                                 </span>
                             </td>
                             <td><?php echo $ticket['fecha_creacion']; ?></td>
+                            <td>
+                                <a href="src/cerrar_ticket.php?id=<?php echo $ticket['id']; ?>" class="btn btn-sm btn-success fw-bold">Eliminar</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
