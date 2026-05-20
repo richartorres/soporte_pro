@@ -2,11 +2,17 @@
 <?php
  require_once 'config/database.php'; 
 
- $sql = "SELECT *  FROM tickets ORDER BY fecha_creacion DESC";
+try {
+   
+    $sql = "SELECT * FROM tickets WHERE estado IS NULL OR estado != 'cerrado' ORDER BY id DESC";
+    
+    $sentencia = $conexion->query($sql);
+    $tickets = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error al consultar los tickets: " . $e->getMessage();
+    $tickets = []; 
+}
 
- $sentencia = $conexion->query($sql);
-
- $tickets = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -72,7 +78,11 @@
                             </td>
                             <td><?php echo $ticket['fecha_creacion']; ?></td>
                             <td>
-                                <a href="src/cerrar_ticket.php?id=<?php echo $ticket['id']; ?>" class="btn btn-sm btn-success fw-bold">Eliminar</a>
+                                <a href="src/cerrar_ticket.php?id=<?php echo $ticket['id']; ?>" 
+                                class="btn btn-sm btn-primary fw-bold text-white" 
+                                onclick="return confirmarResolucion();">
+                                Resolver
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -82,6 +92,12 @@
     <?php endif; ?>
 </div>
 
+<script>
+function confirmarResolucion() {
+    // Esta ventana devuelve true (Aceptar) o false (Cancelar)
+    return confirm("¿Confirmas que ya resolviste el problema de tu compañero y deseas cerrar este ticket?");
+}
+</script>
 
 </body>
 </html>

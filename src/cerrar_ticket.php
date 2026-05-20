@@ -9,7 +9,7 @@ $id = (int)$_GET['id'];
     try
     {
 
-   $sql = "DELETE FROM tickets WHERE id = :id";
+   $sql = "UPDATE tickets SET estado = 'cerrado' WHERE id = :id";
 
     $stmt = $conexion->prepare($sql);
 
@@ -24,7 +24,8 @@ $id = (int)$_GET['id'];
 
     } catch (PDOException $e) 
         {
-            echo "Error al eliminar el ticket: " . $e->getMessage();
+            echo "Error al cerrar el ticket: " . $e->getMessage();
+            exit;
         }
 
 } else {
