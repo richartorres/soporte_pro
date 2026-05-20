@@ -17,7 +17,32 @@
                     </div>
                     <div class="card-body p-4">
                         <form action="src/insertar_ticket.php" method="POST">
-                            
+                          
+                            <div class="mb-3">
+
+                                <label for="nombre_usuario" class="form-label">Tu Nombre</label>
+                                <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Ej. Juan Pérez" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="departamento" class="form-label">Departamento</label>
+                                <select name="departamento" id="departamento" class="form-select" required>
+                                    <option value="" disabled selected>-- Selecciona tu departamento --</option>
+                                    <option value="Sistemas">Sistemas</option>
+                                    <option value="Contabilidad">Contabilidad</option>
+                                    <option value="Publicaciones">Publicaciones</option>
+                                    <option value="Almacén">Almacén</option>
+                                    <option value="Litografía">Litografía</option>
+                                    <option value="Profesores Español">Profesores Español</option>
+                                    <option value="Profesores Matemáticas">Profesores Matemáticas</option>
+                                    <option value="Otros Profesores">Otros Profesores</option>
+                                    <option value="Virtual">Virtual</option>
+                                    <option value="Coordinadores">Coordinadores</option>
+                                    <option value="Atencion al Cliente">Atencion al Cliente</option>
+                                </select>
+                            </div>
+
+
                             <div class="mb-3">
                                 <label for="titulo" class="form-label fw-semibold">Título del problema</label>
                                 <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ej: Falla en la impresora del segundo piso" required>

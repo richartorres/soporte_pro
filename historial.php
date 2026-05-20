@@ -44,12 +44,14 @@ try {
                         <table class="table table-hover align-middle">
                             <thead class="table-dark">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Título del Problema</th>
-                                    <th>Descripción de la Falla</th>
-                                    <th>Prioridad</th>
-                                    <th>Fecha de Reporte</th>
-                                    <th>Estado del Ticket</th>
+                                    <th style="width: 5%;">ID</th>
+                                    <th style="width: 15%;">Título del Problema</th>
+                                    <th style="width: 15%;">Usuario</th>
+                                    <th style="width: 15%;">Departamento</th>
+                                    <th style="width: 20%;">Descripción de la Falla</th>
+                                    <th style="width: 10%;">Prioridad</th>
+                                    <th style="width: 10%;">Fecha de Reporte</th>
+                                    <th style="width: 10%;">Estado del Ticket</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,6 +59,11 @@ try {
                                     <tr>
                                         <td class="fw-bold">#<?php echo $ticket['id']; ?></td>
                                         <td><?php echo htmlspecialchars($ticket['titulo'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                        
+                                        <td class="fw-semibold text-dark"><?php echo htmlspecialchars($ticket['nombre_usuario'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                        
+                                        <td><span class="badge bg-secondary"><?php echo htmlspecialchars($ticket['departamento'], ENT_QUOTES, 'UTF-8'); ?></span></td>
+                                        
                                         <td class="text-muted small"><?php echo htmlspecialchars($ticket['descripcion'], ENT_QUOTES, 'UTF-8'); ?></td>
                                         
                                         <td>
@@ -75,7 +82,7 @@ try {
                                         <td class="text-muted small"><?php echo $ticket['fecha_creacion']; ?></td>
                                         
                                         <td>
-                                            <span class="badge bg-success px-3 py-2 fw-bold text-uppercase">Solucionado</span>
+                                            <span class="badge bg-success px-3 py-2 fw-bold text-uppercase w-100">Solucionado</span>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
