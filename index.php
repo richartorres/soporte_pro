@@ -23,6 +23,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <br>
     <title>Gestión de Tickets - SoportePro</title>
 
     <!-- CDN de Bootstrap 5 -->
@@ -35,13 +36,15 @@ try {
 <div class="container mt-5">
     <h1 class="text-center mb-4">Gestión de Tickets - SoportePro</h1>
 
+       <br><br>
 
     <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Listado de Solicitudes</h3>
     <a href="crear_ticket.php" class="btn btn-primary">Crear Nuevo Ticket</a>
     </div>
 
-    
+       <br>
+
     <?php if (empty($tickets)): ?>
         <!-- Si no hay tickets, mostramos un aviso -->
         <div class="alert alert-info text-center">
@@ -90,6 +93,14 @@ try {
             </table>
         </div>
     <?php endif; ?>
+
+    <br><br>
+
+<div class="d-flex justify-content-center">
+    <a href="historial.php" class="btn btn-secondary fw-bold">Ver Historial</a>
+</div>
+
+
 </div>
 
 <script>
