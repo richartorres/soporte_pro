@@ -30,7 +30,7 @@ try
         
     ]);
 
-    header("location: ../index.php");
+    header("Location: ../agradecimiento.php");
 
     exit;
 

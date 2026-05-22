@@ -64,7 +64,6 @@
 
                             <div class="d-flex gap-2 pt-2">
                                 <button type="submit" class="btn btn-primary w-100 fw-bold">Guardar Ticket</button>
-                                <a href="index.php" class="btn btn-outline-secondary w-100">Cancelar</a>
                             </div>
 
                         </form>
