@@ -94,6 +94,8 @@ try {
 
 </div>
 
+<br><br>
+
 <script>
 function confirmarResolucion() {
     return confirm("¿Confirmas que ya resolviste el problema de tu compañero y deseas cerrar este ticket?");
