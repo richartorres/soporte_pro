@@ -104,21 +104,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p style='font-size: 12px; color: #777777; text-align: center; margin-bottom: 0;'>Este es un correo automático generado por SoportePro.</p>
                     </div>
                 </div>
-            ";
+            ";  
 
+            // Se envía el correo de forma interna
             $mail->send();
 
         } catch (Exception $e) {
-            // 👈 VOLVEMOS AL MÉTODO SILENCIOSO PARA PRODUCCIÓN
             error_log("Error de PHPMailer: " . $mail->ErrorInfo);
         }
 
-        // 5. Redirección (¡Ahora sí saltará directo sin trabarse!)
-        header("Location: ../agradecimiento.php");
+        // 🚀 RESPUESTA INMEDIATA PARA JAVASCRIPT (JSON de éxito)
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'success', 'message' => 'Ticket guardado correctamente']);
         exit;
         
     } catch (PDOException $e) {
-        echo "Error al guardar el ticket en la Base de Datos: " . $e->getMessage();
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+        exit;
     }
 }
 ?>

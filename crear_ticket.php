@@ -16,10 +16,10 @@
                         <h5 class="card-title mb-0 fw-bold">Crear Nuevo Ticket</h5>
                     </div>
                     <div class="card-body p-4">
-                        <form action="src/insertar_ticket.php" method="POST">
+                        <!-- ⚡ Agregamos el id="formTicket" para controlarlo con JS -->
+                        <form id="formTicket" action="src/insertar_ticket.php" method="POST">
                           
                             <div class="mb-3">
-
                                 <label for="nombre_usuario" class="form-label">Tu Nombre</label>
                                 <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Ej. Juan Pérez" required>
                             </div>
@@ -42,7 +42,6 @@
                                 </select>
                             </div>
 
-
                             <div class="mb-3">
                                 <label for="titulo" class="form-label fw-semibold">Título del problema</label>
                                 <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ej: Falla en la impresora del segundo piso" required>
@@ -63,7 +62,8 @@
                             </div>
 
                             <div class="d-flex gap-2 pt-2">
-                                <button type="submit" class="btn btn-primary w-100 fw-bold">Guardar Ticket</button>
+                                <!-- ⚡ Agregamos id="btnGuardar" para cambiar el texto dinámicamente -->
+                                <button type="submit" id="btnGuardar" class="btn btn-primary w-100 fw-bold">Guardar Ticket</button>
                             </div>
 
                         </form>
@@ -74,5 +74,42 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 🚀 SCRIPT ASÍNCRONO PARA VELOCIDAD ULTRA RÁPIDA -->
+    <script>
+    document.getElementById('formTicket').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que la página se recargue o se quede en blanco
+
+        const boton = document.getElementById('btnGuardar');
+        
+        // Deshabilitamos el botón y cambiamos el texto para evitar clics duplicados
+        boton.disabled = true;
+        boton.innerText = "Guardando ticket...";
+
+        // Capturamos todos los datos del formulario de forma automática
+        const formData = new FormData(this);
+
+        // Enviamos los datos en segundo plano usando la ruta original del action
+            fetch(this.action, {
+        method: 'POST',
+        body: formData
+        })
+        .then(response => response.json()) // Convierte la respuesta a JSON
+        .then(data => {
+        // Si la base de datos devolvió éxito, redirige de inmediato
+        if(data.status === 'success') {
+            window.location.href = 'agradecimiento.php';
+        } else {
+            alert('Error en el sistema: ' + data.message);
+        }
+})
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Ocurrió un problema de red al enviar el ticket.');
+            boton.disabled = false;
+            boton.innerText = "Guardar Ticket";
+        });
+    });
+    </script>
 </body>
 </html>
