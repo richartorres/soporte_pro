@@ -1,9 +1,10 @@
 <?php
 
-$host = "localhost";
-$db_name = "gestion_tickets";
-$username = "root";
-$password = "";
+$host = "bhkakiz7f9mdp8uua5cx-mysql.services.clever-cloud.com";
+$db_name = "bhkakiz7f9mdp8uua5cx";
+$username = "u2psihec0lpgivkg";
+$password = "UhzbWcsxjgJDfKzDdzkn";
+$port = "3306";
 
 try 
 {
