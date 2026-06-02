@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':prioridad'      => $prioridad
         ]);
 
-        // =========================================================================
+        /* =========================================================================
         // 🚀 ENVÍO DE ALERTA AUTOMÁTICA CON PHPMAILER OFICIAL
         // =========================================================================
         
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         } catch (Exception $e) {
             error_log("Error de PHPMailer: " . $mail->ErrorInfo);
-        }
+        } */
 
         // 🚀 RESPUESTA INMEDIATA PARA JAVASCRIPT (JSON de éxito)
         header('Content-Type: application/json');
